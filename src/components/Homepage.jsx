@@ -37,7 +37,7 @@ const Homepage = () => {
         </Col>
       </Row>
       <div className="home-heading-cont">
-        <Title level={2} className="home-title">Top 12 Cryptocurrencies in the world</Title>
+        <Title level={2} className="home-title">Top Cryptocurrencies in the world</Title>
         <Title level={2} className="show-more" >
           <Link to="/cryptocurrencies">Show More</Link>
         </Title>
