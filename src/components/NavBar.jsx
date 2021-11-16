@@ -1,6 +1,6 @@
 import React , {useState, useEffect}from 'react'
 import icon from '../images/cryptocurrency.png';
-import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOutlined} from '@ant-design/icons';
+import { HomeOutlined, MoneyCollectOutlined, FundOutlined, MenuOutlined} from '@ant-design/icons';
 import { Link } from 'react-router-dom'
 import { Button, Menu, Typography, Avatar } from 'antd'
 
@@ -39,16 +39,16 @@ const NavBar = () => {
       </div>
       {ActiveMenu && (
         <Menu theme="dark">
-          <Menu.Item icon={< HomeOutlined />}>
+          <Menu.Item icon={< HomeOutlined/>} key="Home">
             <Link to="/">Home</Link>
           </Menu.Item>
-          <Menu.Item icon={< FundOutlined />}>
+          <Menu.Item icon={< FundOutlined />} key="Cryptocurrencies">
             <Link to="/cryptocurrencies">Cryptocurrencies</Link>
           </Menu.Item>
-          <Menu.Item icon={< MoneyCollectOutlined />}>
+          <Menu.Item icon={< MoneyCollectOutlined />} key="Exchanges">
             <Link to="/exchanges">Exchanges</Link>
           </Menu.Item>
-          <Menu.Item icon={< HomeOutlined />}>
+          <Menu.Item icon={< HomeOutlined />} key="News">
             <Link to="/news">News</Link>
           </Menu.Item>
         </Menu>

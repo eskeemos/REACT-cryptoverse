@@ -3,6 +3,7 @@ import { useGetCryptosQuery } from '../services/cryptoApi';
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi';
 import { Select, Typography, Row, Col, Avatar, Card } from 'antd';
 import moment from 'moment';
+import Loader from './Loader';
 
 const { Text, Title } = Typography;
 const { Option } = Select;
@@ -13,10 +14,10 @@ const News = ({ simplified }) => {
   const [newsCategory, setnewsCategory] = useState('Cryptocurrency');
   const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 6 : 12 })
   
-  if(!cryptoNews?.value) return 'Loading...';
+  if(!cryptoNews?.value) return <Loader />;
 
   return (
-    <Row gutter={[24,24]} >
+    <Row gutter={[24,24]}>
       {!simplified && (
         <Col span={24}>
           <Select showSearch className="select-news" 
@@ -25,7 +26,7 @@ const News = ({ simplified }) => {
           filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase())}
           >
             <Option value="Cryptocurrency">Cryptocurrency</Option>
-            {data?.data?.coins.map((coin) => <Option value={coin.name}>
+            {data?.data?.coins.map((coin, i) => <Option key={i} value={coin.name}>
               {coin.name}
             </Option> )}
           </Select>
@@ -37,7 +38,7 @@ const News = ({ simplified }) => {
             <a href={news.url} target="_blank" rel="noreferrer">
               <div className="news-image-cont">
                 <Title className="news-title" level={4}>{news.name}</Title>
-                <img style={{maxWidth: '200px', maxWidth: '200px'}} src={news?.image?.thumbnail?.contentUrl || demoImage} alt="news" />
+                <img style={{maxWidth: '200px', maxHeight: '200px'}} src={news?.image?.thumbnail?.contentUrl || demoImage} alt="news" />
               </div>
               <p>
                 {news.description > 100 ? `${news.description.substring(0,100)}...`: news.description}
