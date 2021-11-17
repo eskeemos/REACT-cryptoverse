@@ -376,3 +376,16 @@ width: 70%;
     padding: 20px;
     align-items: center;
 }
+.plus{
+    background-color: rgba(65, 105, 225, 0.096) !important;
+    height: 210px;
+}
+.plus2{
+    background-color: rgba(225, 65, 204, 0.096) !important;
+    height: 330px;
+}
+.plus3{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+}
